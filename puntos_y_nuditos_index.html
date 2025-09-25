@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Puntos y Nuditos — Tejidos en crochet</title>
+  <meta name="description" content="Puntos y Nuditos: tejidos hechos a mano (gorros, bufandas, muñecos). Pedido por WhatsApp." />
+  <meta property="og:title" content="Puntos y Nuditos" />
+  <meta property="og:description" content="Tejidos en crochet hechos a mano. Envíos y pedidos por WhatsApp." />
+  <meta property="og:image" content="images/og-image.jpg" />
+  <!-- Fuente: cambia si quieres otra -->
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;700&display=swap" rel="stylesheet">
+
+  <!--
+    INSTRUCCIONES RÁPIDAS:
+    - Reemplaza los textos de BRAND_NAME, PHONE_NUMBER, INSTAGRAM_HANDLE más abajo.
+    - Pon tus fotos en la carpeta `images/` y reemplaza las rutas en la sección CATÁLOGO.
+    - Para cambiar colores, edita las variables CSS en :root.
+  -->
+
+  <style>
+    :root{
+      --bg: #fffaf6;
+      --card: #fff;
+      --muted: #7a6f6f;
+      --primary: #C96B6B; /* color principal (ajusta) */
+      --accent: #F1C6C6;
+      --radius: 16px;
+      --shadow: 0 6px 20px rgba(0,0,0,0.08);
+      --maxwidth: 1100px;
+      --font: 'Nunito', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+    }
+    *{box-sizing:border-box}
+    body{font-family:var(--font);margin:0;background:linear-gradient(180deg,var(--bg),#fff);color:#222;line-height:1.5}
+    a{color:inherit;text-decoration:none}
+    .container{max-width:var(--maxwidth);margin:0 auto;padding:24px}
+
+    /* Header */
+    header{background:transparent;padding:18px 0;position:sticky;top:0;backdrop-filter: blur(4px);z-index:40}
+    .nav{display:flex;align-items:center;justify-content:space-between}
+    .brand{font-weight:700;letter-spacing:0.6px;font-size:20px;color:var(--primary)}
+    nav ul{display:flex;gap:18px;align-items:center;margin:0;padding:0;list-style:none}
+    nav a{font-weight:600;color:#333}
+    .burger{display:none;border:0;background:none}
+
+    /* Hero */
+    .hero{display:grid;grid-template-columns:1fr 420px;gap:24px;align-items:center;padding:36px 0}
+    .hero-card{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);padding:28px}
+    .hero h1{margin:0 0 8px;font-size:34px}
+    .hero p{margin:0 0 18px;color:var(--muted)}
+    .cta{display:inline-block;background:var(--primary);color:#fff;padding:10px 16px;border-radius:10px;font-weight:700}
+
+    /* Catalog */
+    .catalog{padding:40px 0}
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .card{background:var(--card);border-radius:14px;padding:12px;box-shadow:var(--shadow);overflow:hidden}
+    .card img{width:100%;height:220px;object-fit:cover;border-radius:10px}
+    .card h3{margin:10px 0 6px;font-size:18px}
+    .price{color:var(--primary);font-weight:700}
+    .btn{display:inline-block;padding:8px 12px;border-radius:10px;border:0;background:transparent;font-weight:700}
+
+    /* About */
+    .about{display:flex;gap:20px;align-items:center;padding:24px 0}
+    .about img{width:240px;border-radius:12px;box-shadow:var(--shadow)}
+
+    /* Contact */
+    .contact{padding:30px 0}
+    .whatsapp{display:inline-block;background:#25D366;color:#fff;padding:10px 14px;border-radius:10px;font-weight:700}
+
+    /* Modal */
+    .modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,0.6);z-index:60}
+    .modal.show{display:flex}
+    .modal .inner{max-width:900px;width:95%;background:#fff;padding:16px;border-radius:12px}
+    .modal img{width:100%;height:auto;border-radius:8px}
+
+    footer{padding:36px 0;text-align:center;color:var(--muted)}
+
+    /* Responsive */
+    @media (max-width: 900px){
+      .hero{grid-template-columns:1fr}
+      .grid{grid-template-columns:repeat(2,1fr)}
+      nav ul{display:none}
+      .burger{display:block}
+    }
+    @media (max-width: 520px){
+      .grid{grid-template-columns:1fr}
+      .hero h1{font-size:26px}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <div class="brand">Puntos y Nuditos 🧶</div>
+      <nav>
+        <ul>
+          <li><a href="#inicio">Inicio</a></li>
+          <li><a href="#catalogo">Catálogo</a></li>
+          <li><a href="#sobre-mi">Sobre mí</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </nav>
+      <button class="burger" aria-label="menu" onclick="toggleMenu()">☰</button>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- HERO / INICIO -->
+    <section id="inicio" class="hero">
+      <div class="hero-card">
+        <h1>Bienvenido a <span style="color:var(--primary)">Puntos y Nuditos</span></h1>
+        <p>Tejidos en crochet hechos con amor: gorros, bufandas, amigurumis y accesorios. Productos personalizados y por encargo.</p>
+        <!-- CAMBIA EL NÚMERO EN phoneLink EN EL SCRIPT ABAJO -->
+        <a class="cta" id="cta-whatsapp" href="#contacto">Pedir por WhatsApp</a>
+
+        <div style="margin-top:16px;color:var(--muted)">
+          <strong>Envíos</strong>: a todo el país • <strong>Tiempo</strong>: 3–7 días hábiles
+        </div>
+      </div>
+
+      <div style="border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow)">
+        <img src="images/hero-sample.jpg" alt="Puntos y Nuditos - tejidos" style="width:100%;height:100%;object-fit:cover;display:block;"> 
+      </div>
+    </section>
+
+    <!-- CATÁLOGO -->
+    <section id="catalogo" class="catalog">
+      <h2>Catálogo</h2>
+      <p style="color:var(--muted)">Haz clic en una foto para ver más.</p>
+
+      <div class="grid">
+        <!-- Reemplaza estas tarjetas con tus productos reales -->
+        <article class="card">
+          <img src="images/product1.jpg" alt="Gorro tejido color mostaza" onclick="openModal(this)" />
+          <h3>Gorro "Aurora"</h3>
+          <div class="price">$25.000 COP</div>
+          <div style="margin-top:8px"><a class="btn" href="#contacto" onclick="goToContact()">Contactar</a></div>
+        </article>
+
+        <article class="card">
+          <img src="images/product2.jpg" alt="Bufanda tejida gris" onclick="openModal(this)" />
+          <h3>Bufanda "Luna"</h3>
+          <div class="price">$40.000 COP</div>
+          <div style="margin-top:8px"><a class="btn" href="#contacto" onclick="goToContact()">Contactar</a></div>
+        </article>
+
+        <article class="card">
+          <img src="images/product3.jpg" alt="Amigurumi osito" onclick="openModal(this)" />
+          <h3>Amigurumi "Osito"</h3>
+          <div class="price">$35.000 COP</div>
+          <div style="margin-top:8px"><a class="btn" href="#contacto" onclick="goToContact()">Contactar</a></div>
+        </article>
+
+        <!-- Duplica/edita más productos aquí -->
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="sobre-mi" class="about">
+      <div>
+        <h2>Sobre mí</h2>
+        <p>Hola — soy [Tu Nombre], la fundadora de Puntos y Nuditos. Aprendí a tejer con mi abuela y ahora creo piezas únicas hechas a mano con fibras de calidad. Acepto pedidos personalizados: colores, tallas y detalles a medida.</p>
+        <p style="color:var(--muted)"><strong>Pedidos</strong>: escríbeme por WhatsApp o por Instagram para cotizar.</p>
+      </div>
+      <img src="images/about.jpg" alt="Foto de la artesana" />
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contacto" class="contact">
+      <h2>Contacto</h2>
+      <p style="color:var(--muted)">¿Listo para pedir? Escribe por WhatsApp o síguenos en Instagram.</p>
+
+      <p>
+        <!-- CAMBIA phoneNumber E instagramHandle EN EL SCRIPT ABAJO -->
+        <a id="whatsapp-btn" class="whatsapp" href="#">WhatsApp</a>
+        <a id="instagram-link" style="margin-left:12px;font-weight:700" href="#">Instagram</a>
+      </p>
+
+      <h3 style="margin-top:18px">Formulario rápido</h3>
+      <form action="mailto:tu-correo@ejemplo.com" method="post" enctype="text/plain">
+        <label style="display:block;margin:8px 0">Nombre<input type="text" name="Nombre" style="width:100%;padding:8px;border-radius:8px;border:1px solid #e7e2e2"></label>
+        <label style="display:block;margin:8px 0">Mensaje<textarea name="Mensaje" rows="4" style="width:100%;padding:8px;border-radius:8px;border:1px solid #e7e2e2"></textarea></label>
+        <button type="submit" style="padding:10px 14px;border-radius:10px;background:var(--primary);color:#fff;border:0;font-weight:700">Enviar correo</button>
+      </form>
+    </section>
+
+  </main>
+
+  <!-- MODAL para ver imagen ampliada -->
+  <div id="modal" class="modal" onclick="closeModal(event)">
+    <div class="inner" role="dialog" aria-modal="true">
+      <img id="modal-img" src="" alt=""> 
+    </div>
+  </div>
+
+  <footer>
+    <div class="container">
+      <div>© <strong>Puntos y Nuditos</strong> — Hecho con ❤️</div>
+      <div style="margin-top:8px;color:var(--muted)">Dirección • Envíos a todo el país</div>
+    </div>
+  </footer>
+
+  <script>
+    /* CONFIG - cambia estos valores con tus datos */
+    const BRAND_NAME = 'Puntos y Nuditos';
+    const PHONE_NUMBER = '573001234567'; // formato: código país + número sin signos (ej: 57 300 1234567)
+    const INSTAGRAM_HANDLE = 'puntosynuditos';
+
+    // Inserta hrefs dinámicos
+    const phoneLink = 'https://wa.me/' + PHONE_NUMBER + '?text=' + encodeURIComponent('Hola! Quiero pedir un producto de ' + BRAND_NAME);
+    document.getElementById('whatsapp-btn').setAttribute('href', phoneLink);
+    document.getElementById('cta-whatsapp').setAttribute('href', phoneLink);
+    document.getElementById('instagram-link').setAttribute('href', 'https://instagram.com/' + INSTAGRAM_HANDLE);
+
+    function toggleMenu(){
+      const ul = document.querySelector('nav ul');
+      ul.style.display = (ul.style.display === 'flex') ? 'none' : 'flex';
+    }
+
+    function openModal(imgEl){
+      const modal = document.getElementById('modal');
+      const modalImg = document.getElementById('modal-img');
+      modalImg.src = imgEl.src;
+      modalImg.alt = imgEl.alt || '';
+      modal.classList.add('show');
+    }
+    function closeModal(e){
+      if(e.target.id === 'modal' || e.key === 'Escape'){
+        document.getElementById('modal').classList.remove('show');
+      }
+    }
+    document.addEventListener('keydown', closeModal);
+
+    function goToContact(){
+      window.location.hash = '#contacto';
+      // smooth scroll
+      document.querySelector('#contacto').scrollIntoView({behavior:'smooth'});
+    }
+  </script>
+</body>
+</html>
